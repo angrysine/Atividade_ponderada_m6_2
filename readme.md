@@ -25,6 +25,6 @@ O código do robô foi feito em python3 e utiliza a biblioteca rclpy do ros2 par
 ## 4. Video
 
 <video width="320" height="240" controls>
-  <source src="[video.mov](https://github.com/angrysine/Atividade_ponderada_m6_2/blob/main/v%C3%ADdeo.mp4)" type="video/mp4">
+  <source src="https://github.com/angrysine/Atividade_ponderada_m6_2/blob/main/v%C3%ADdeo.mp4" type="video/mp4">
 </video>
 https://github.com/angrysine/Atividade_ponderada_m6_2/blob/main/v%C3%ADdeo.mp4
