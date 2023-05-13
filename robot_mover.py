@@ -1,14 +1,13 @@
 import rclpy
 from rclpy.node import Node
+from modules import pilha
 from geometry_msgs.msg import Twist,Point
 from std_msgs.msg import String
 from nav_msgs.msg import Odometry
 #euler_from_quaternion, quaternion_from_euler
 from tf_transformations import euler_from_quaternion
 from math import atan2
-
-
-first_time = True
+    
 
 
 class robot_controller(Node):
@@ -19,10 +18,12 @@ class robot_controller(Node):
         self.x,self.y = 0.0,0.0
         # robot orientation
         self.theta = 0.0
-        # target point index
-        self.point = 0
+        
         # target point list
-        self.point_list = [(1.0,2.0,3.0),(4.0,5.0,6.0),(-7.0,8.0,9.0),(-6.0,-2.0,25.0),(1.0,2.0,3.0)]
+        point_list = [(1.0,2.0,3.0),(4.0,5.0,6.0),(-7.0,8.0,9.0),(-6.0,-2.0,25.0),(1.0,2.0,3.0)]
+        for point in point_list:
+            self.point_list.empilhar(point)
+        self.point_list = pilha()
         # publisher, controls robot velocity
         self.publisher = self.create_publisher(Twist, '/cmd_vel', 10)
         # timer, calls publisher_callback every 0.02 seconds
@@ -44,8 +45,8 @@ class robot_controller(Node):
         goal = Point()
         speed = Twist()
         # get target point
-        goal.x = self.point_list[self.point][0]
-        goal.y = self.point_list[self.point][1]
+        goal.x = self.point_list.topo[0]
+        goal.y = self.point_list.topo[1]
 
         # calculate angle to target point
         inc_x = goal.x - self.x
@@ -53,10 +54,8 @@ class robot_controller(Node):
         angle_to_goal = atan2(inc_y,inc_x)
 
         # if robot is close to target point, go to next point
-        if abs(self.x -self.point_list[self.point][0])<0.1 and abs(self.y -self.point_list[self.point][1])<0.1 :
-            self.point += 1
-            if self.point == len(self.point_list):
-                self.point = 0
+        if abs(self.x -self.point_list.topo[0])<0.1 and abs(self.y -self.point_list.topo[1])<0.1 :
+            self.point_list.desempilhar()
 
         # if robot is not facing target point, rotate
         if abs(angle_to_goal - self.theta) > 0.1:
