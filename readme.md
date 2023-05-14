@@ -23,8 +23,4 @@ A estrutura de dados utilizada foi a pilha, que é uma estrutura de dados linear
 O código do robô foi feito em python3 e utiliza a biblioteca rclpy do ros2 para criar um nodo que controla o robô. O código do robô cria uma pilha e insere nela os pontos de navegação que o robô deve percorrer. O robô percorre os pontos de navegação que estão na pilha e quando chega no último ponto, ele volta para o primeiro ponto. O robô primeiramente checa se ele esta perto do ponto da pilha atual, se não estiver ele checa se está na direção do ponto, se não estiver ele gira até ficar na direção do ponto e depois anda em linha reta até chegar perto do ponto. Quando o robô chega perto do ponto ele o remove da pilha e vai para o próximo ponto. Quando o robô chega no último ponto da pilha ele volta para o primeiro ponto da pilha e repete o processo. Olhamos o topico odometry para saber a posição e ângulo do robô e o tópico cmd_vel para controlar o robô.
 
 ## 4. Video
-
-https://github.com/angrysine/Atividade_ponderada_m6_2/blob/main/v%C3%ADdeo.mp4
-<video width="320" height="240" controls>
-  <source src="https://github.com/angrysine/Atividade_ponderada_m6_2/blob/main/v%C3%ADdeo.mp4" type="video/mp4">
-</video>
+Dentro do projeto existe um arquivo de vídeo chamado video demonstrando o funcionamento do projeto
