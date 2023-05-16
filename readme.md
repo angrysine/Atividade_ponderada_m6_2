@@ -5,7 +5,7 @@
 O projeto atualmente contém arquivos : este readme, um arquivo com a estrutura de dados pilha e código que cria um nodo do ros2 que controla o robô. Esse código foi feito para ser usado junto empty_world.launch.py que é um package do ros2 que pode ser executado com o comando:
 
 ```
-ros2 launch empty_world.launch.py
+ros2 launch turtlebot3_gazebo empty_world.launch.py
 ```
 
 O código do robô pode ser executado com o comando:
